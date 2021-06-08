@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      Lista de Unidades
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar (ionChange)="buscarUnidades($event)" animate placeholder="Buscar"></ion-searchbar>
+
+  <ion-item lines="none" *ngIf="!listaUnidades">
+    <ion-label class="ion-text-center">
+      <ion-spinner name="lines"></ion-spinner>
+      Montando lista de OPs
+    </ion-label>
+  </ion-item>
+
+  <ion-list *ngIf="listaUnidades">
+
+    <ion-item-sliding *ngFor="let unidade of listaUnidades">
+      <ion-item lines="full">
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>{{unidade.UnidadeNome}}</h1>
+            <p>{{unidade.UnidadeCidade}}</p>
+          </div>
+        </ion-label>
+        <ion-chip color='danger'>
+          <ion-label>OP {{unidade.UnidadeCodigo}}</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option>
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

@@ -1,4 +1,7 @@
+import { UnidadesListaPage } from './../unidades/unidades-lista/unidades-lista.page';
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +10,9 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private router: Router){}
+  abreListaUnidades(){
+    this.router.navigate(['/unidades-lista']);
+  }
 
 }
